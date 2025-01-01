@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #fff;
+            color: #333;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+        h3 {
+            font-weight: bold;
+            text-align: center;
+            color: #ff7eb3;
+        }
+        .input-field input {
+            color: #333;
+        }
+        .input-field label {
+            color: #757575;
+        }
+        .btn-signup {
+            background-color: #ff7eb3 !important;
+            width: 100%;
+        }
+        .btn-signup:hover {
+            background-color: #e0568e !important;
+        }
+        .link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .link a {
+            color: #ff7eb3;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h3>Sign Up</h3>
+        <form method="post" action="/user">
+            <div class="input-field">
+                <label for="name">Fullname</label>
+                <input id="name" type="text" name="name" required />
+            </div>
+            <div class="input-field">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" required />
+            </div>
+            <div class="input-field">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" required />
+            </div>
+            <button type="submit" class="btn btn-signup waves-effect waves-light">Sign Up</button>
+        </form>
+        <div class="link">
+            <p>Already have an account? <a href="/login">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
