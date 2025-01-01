@@ -34,7 +34,7 @@
             text-align: center;
             color: #ff7eb3;
         }
-        .input-field input {
+        .input-field input, .input-field select {
             color: #333;
         }
         .input-field label {
@@ -77,6 +77,14 @@
                 <label for="password">Password</label>
                 <input id="password" type="password" name="password" required />
             </div>
+            <div class="input-field">
+                <select id="role" name="role" required>
+                    <option value="" disabled selected>Choose your role</option>
+                    <option value="USER">USER</option>
+                    <option value="ADMIN">ADMIN</option>
+                </select>
+                <label for="role">Role</label>
+            </div>
             <button type="submit" class="btn btn-signup waves-effect waves-light">Sign Up</button>
         </form>
         <div class="link">
@@ -86,5 +94,11 @@
 
     <!-- Import Materialize JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const elems = document.querySelectorAll('select');
+            M.FormSelect.init(elems);
+        });
+    </script>
 </body>
 </html>

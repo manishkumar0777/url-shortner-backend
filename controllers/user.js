@@ -5,12 +5,13 @@ const { setUser } = require("../services/auth");
 
 
 const handleUserSignUp = async(req , res) => {
-    const {name, email, password} = req.body;
+    const {name, email, password, role} = req.body;
 
     await User.create({
         name,
         email,
         password,
+        role,
     })
     return res.redirect("/");
 }
@@ -23,9 +24,8 @@ const handleUserLogin = async (req, res) => {
             error : "invalid Email or PassWord"
         })
     
-    const sessionId = uuidv4();
-    setUser(sessionId, user);
-    res.cookie("uid", sessionId);
+    const token = setUser(user); 
+    res.cookie("uid", token);
     return res.redirect("/");
 }
 

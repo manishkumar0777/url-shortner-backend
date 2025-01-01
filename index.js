@@ -7,7 +7,7 @@ const URL = require("./models/url");
 const PORT = process.env.PORT || 3000;
 
 //auth
-const { restrictToLoggedInUserOnly, checkAuth } = require('./middlewares/auth');
+const { checkAuththentication, restrictTo } = require('./middlewares/auth');
 
 
 //router
@@ -32,10 +32,12 @@ app.set("views" , path.resolve("./views") )
 app.use(express.json());
 app.use(express.urlencoded({extended : false}));
 app.use(cookieParser());
+app.use(checkAuththentication);
+
 
 //routes
-app.use("/url",restrictToLoggedInUserOnly, urlRoute);
-app.use("/", checkAuth, staticRoute);
+app.use("/url", restrictTo(["USER", "ADMIN"]), urlRoute);
+app.use("/", staticRoute);
 app.use("/user", userRoute);
 
 app.listen (PORT , ()=> {
