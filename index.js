@@ -1,8 +1,10 @@
 const express = require('express');
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const dotenv = require('dotenv').config();
 
 const URL = require("./models/url");
+const PORT = process.env.PORT || 3000;
 
 //auth
 const { restrictToLoggedInUserOnly, checkAuth } = require('./middlewares/auth');
@@ -17,12 +19,10 @@ const {MongoDBConnect} = require("./Database/connect");
 
 
 //connecting to database
-MongoDBConnect("mongodb://127.0.0.1:27017/url-shortener")
-.then(() => console.log("Database Connected"));
+MongoDBConnect();
 
 //creating the server
 const app  = express();
-const PORT = 8000;
 
 //viewengine
 app.set("view engine", "ejs"); // setting ejs view engine for SSR
@@ -39,5 +39,5 @@ app.use("/", checkAuth, staticRoute);
 app.use("/user", userRoute);
 
 app.listen (PORT , ()=> {
-    console.log("server started")
+    console.log(`Server started on PORT ${PORT}`)
 })
