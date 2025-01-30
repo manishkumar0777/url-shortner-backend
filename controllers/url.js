@@ -23,6 +23,8 @@ const handleGenerateShortURL = async (req, res) => {
 
 const handlegen = async (req, res) => {
     const shortId = req.params.shortId;
+
+    console.log(shortId);
     const entry = await URL.findOneAndUpdate({ shortId }, {
         $push: {
             visitHistory: {
@@ -31,6 +33,8 @@ const handlegen = async (req, res) => {
         }
     }, { new: true }
     );
+
+    console.log(entry);
     if (!entry) {
         return res.status(400).json({ error: "short url not found" });
     }
